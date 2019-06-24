@@ -6,11 +6,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  NavLink} from 'reactstrap';
 
 class NavBar extends Component {
   constructor(props) {
@@ -37,10 +33,10 @@ class NavBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/">Light Theme</NavLink>
+                <NavLink href="/">A Nav Link</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Dark Theme</NavLink>
+                <NavLink href="/">Another Nav Link</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

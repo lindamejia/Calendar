@@ -1,0 +1,10 @@
+.header{
+    display: inline-block;
+    text-align: center;
+    color: #00a699;
+    font-weight:bold;
+}
+
+.title{
+    font-weight: bold;
+}

@@ -5,9 +5,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import moment from 'moment';
 import {Alert, Form, Label, Input, Button } from 'reactstrap';
 import style from './RequestForm.module.css';
-
-
-
+import AppointmentsDisplay from './AppointmentsDisplay';
 
 class RequestForm extends Component {
 
@@ -25,7 +23,6 @@ class RequestForm extends Component {
     }
 
     onSubmit= (e)=>{
-        debugger;
         e.preventDefault();
 
 
@@ -50,12 +47,14 @@ class RequestForm extends Component {
                     dateDisplay: moment().format("YYYY-MM-DD"),
                     start:"",
                     end:"",
-                    endValid:false
+                    endValid:false,
+                    tryAgain: false
                 })
             } else{
                this.setState({tryAgain:true})
             }
-          } else {
+          } 
+          else {
             this.setState({endValid:true})
           }
 
@@ -63,7 +62,6 @@ class RequestForm extends Component {
 
 
     checkArray = (newAppt) => {
-        debugger;
         let appointmentsArray= this.state.appointmentsArray
         
         //case 0: if empty array
@@ -104,8 +102,9 @@ class RequestForm extends Component {
 
     render() {
         return (
-            <div className= "container-fluid">
-                <div className= "col-sm-12 col-md-6">
+            <div className= "container">
+                <div class="row">
+                <div className= "col-md-6 ">
                <Form onSubmit={this.onSubmit}>
                {/* <form> */}
                 <Label> Date: </Label>
@@ -120,7 +119,8 @@ class RequestForm extends Component {
                 focused={this.state.focused} // PropTypes.bool
                 onFocusChange={({ focused }) => { this.setState({ focused }); }}
                 isOutsideRange={day => moment().diff(day, "days") > 0}
-                /></div>
+                />
+                </div>
                 
                 <br/>
                     <Label>
@@ -149,8 +149,13 @@ class RequestForm extends Component {
                 <Alert color="info">
                 Please enter a different time. You have overlapping appointments.
               </Alert>: <span/>}
+
             </div>
-            </div>
+            <div className= "col-md-5 offset-1">
+              <AppointmentsDisplay  appointments={this.state.appointmentsArray}/>
+              </div>
+              </div>
+           </div>
         )
     }
 }
