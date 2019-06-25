@@ -12,7 +12,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter, FormFeedback
 } from "reactstrap";
 import style from "./RequestForm.module.css";
 import AppointmentsDisplay from "./AppointmentsDisplay";
@@ -26,7 +26,7 @@ class RequestForm extends Component {
     // appointment:{},
     appointmentsArray: [],
     tryAgain: false,
-    endValid: null,
+    endValid: '',
     modal: false
   };
 
@@ -62,14 +62,14 @@ class RequestForm extends Component {
           dateDisplay: moment().format("YYYY-MM-DD"),
           start: "",
           end: "",
-          endValid: false,
+          endValid: '',
           tryAgain: false
         });
       } else {
         this.setState({ modal: true });
       }
     } else {
-      this.setState({ endValid: true });
+      this.setState({ endValid: 'has-danger' });
     }
   };
 
@@ -161,18 +161,14 @@ class RequestForm extends Component {
                     value={this.state.end}
                     className={style.input}
                     onChange={this.onChange}
+                    invalid={ this.state.endValid === 'has-danger' }
                   />
+                  <FormFeedback invalid>
+                  There is an error in your end time.
+              </FormFeedback>
                 </div>
               </div>
-              {this.state.endValid ? (
-                <Alert color="danger">
-                  There is an error in your end time.
-                </Alert>
-              ) : (
-                <span />
-              )}
               <br />
-              {/* <button type="default" onClick={this.onSubmit}>Submit </button> */}
               <div className="row justify-content-md-center">
               <div className="col-4">
               <Button
