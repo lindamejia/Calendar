@@ -151,6 +151,7 @@ class RequestForm extends Component {
                     onChange={this.onChange}
                   />
                 </div>
+                
                 <div className="col-4">
                   <Label>End Time: </Label> <br />
                   <Input
@@ -172,6 +173,8 @@ class RequestForm extends Component {
               )}
               <br />
               {/* <button type="default" onClick={this.onSubmit}>Submit </button> */}
+              <div className="row justify-content-md-center">
+              <div className="col-4">
               <Button
                 color="info"
                 size="md"
@@ -181,6 +184,8 @@ class RequestForm extends Component {
               >
                 Submit
               </Button>
+              </div>
+              </div>
             </Form>
 
             <br />
