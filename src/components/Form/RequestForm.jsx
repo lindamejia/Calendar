@@ -118,48 +118,51 @@ class RequestForm extends Component {
         <div className="row">
           <div className="col-md-6 ">
             <Form onSubmit={this.onSubmit}>
-              {/* <form> */}
               <Label> Date: </Label>
-              {/* <input value={this.state.dateDisplay} /> */}
               <Input value={this.state.dateDisplay} className={style.input} />
               <br />
               <div className={style.calendar}>
                 <DayPickerSingleDateController
-                  //    id="date_input"
-                  date={this.state.date} // momentPropTypes.momentObj or null
+                  date={this.state.date}
                   onDateChange={date => {
                     this.setState({
                       date,
                       dateDisplay: date.format("YYYY-MM-DD")
                     });
                   }}
-                  focused={this.state.focused} // PropTypes.bool
+                  focused={this.state.focused} 
                   onFocusChange={({ focused }) => {
                     this.setState({ focused });
                   }}
                   isOutsideRange={day => moment().diff(day, "days") > 0}
                 />
               </div>
+
               <br />
-              <Label>Start Time:</Label>
-              <br />
-              <Input
-                type="time"
-                name="start"
-                value={this.state.start}
-                className={style.input}
-                onChange={this.onChange}
-              />
-              <br />
-              <Label>End Time: </Label> <br />
-              <Input
-                type="time"
-                name="end"
-                min={this.state.start}
-                value={this.state.end}
-                className={style.input}
-                onChange={this.onChange}
-              />
+              <div className="row justify-content-md-center">
+                <div className="col-4">
+                  <Label>Start Time:</Label>
+                  <br />
+                  <Input
+                    type="time"
+                    name="start"
+                    value={this.state.start}
+                    className={style.input}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className="col-4">
+                  <Label>End Time: </Label> <br />
+                  <Input
+                    type="time"
+                    name="end"
+                    min={this.state.start}
+                    value={this.state.end}
+                    className={style.input}
+                    onChange={this.onChange}
+                  />
+                </div>
+              </div>
               {this.state.endValid ? (
                 <Alert color="danger">
                   There is an error in your end time.
@@ -171,7 +174,7 @@ class RequestForm extends Component {
               {/* <button type="default" onClick={this.onSubmit}>Submit </button> */}
               <Button
                 color="info"
-                size="lg"
+                size="md"
                 onClick={this.onSubmit}
                 disabled={!this.state.end}
                 block
