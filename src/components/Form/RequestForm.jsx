@@ -103,7 +103,7 @@ class RequestForm extends Component {
     render() {
         return (
             <div className= "container">
-                <div class="row">
+                <div className="row">
                 <div className= "col-md-6 ">
                <Form onSubmit={this.onSubmit}>
                {/* <form> */}
