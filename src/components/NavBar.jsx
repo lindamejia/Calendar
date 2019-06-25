@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink} from 'reactstrap';
+} from "reactstrap";
+import style from "./NavBar.module.css";
 
 class NavBar extends Component {
   constructor(props) {
@@ -17,32 +16,23 @@ class NavBar extends Component {
       isOpen: false
     };
   }
-  
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
-    render() {
-        return (
-            <div>
-                <Navbar light expand="md">
+  render() {
+    return (
+      <div>
+        <Navbar dark className={style.navBar} expand="md">
           <NavbarBrand href="/">Well Calendar</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/">A Nav Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/">Another Nav Link</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+          <Collapse isOpen={this.state.isOpen} navbar />
         </Navbar>
-            </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 export default NavBar;
