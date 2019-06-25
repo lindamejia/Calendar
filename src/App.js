@@ -19,9 +19,9 @@ class App extends Component {
           <NavBar />
           <RequestForm />
         </Online>
-        {/* <Offline polling={polling}>
+        <Offline polling={polling}>
           <h1>YOU ARE OFFLINE</h1>
-        </Offline> */}
+        </Offline>
       </div>
     );
   }
