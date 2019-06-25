@@ -11,7 +11,8 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter, FormFeedback
+  ModalFooter,
+  FormFeedback
 } from "reactstrap";
 import style from "./RequestForm.module.css";
 import AppointmentsDisplay from "./AppointmentsDisplay";
@@ -24,7 +25,7 @@ class RequestForm extends Component {
     end: "",
     appointmentsArray: [],
     tryAgain: false,
-    endValid: '',
+    endValid: "",
     modal: false
   };
 
@@ -60,14 +61,14 @@ class RequestForm extends Component {
           dateDisplay: moment().format("YYYY-MM-DD"),
           start: "",
           end: "",
-          endValid: '',
+          endValid: "",
           tryAgain: false
         });
       } else {
         this.setState({ modal: true });
       }
     } else {
-      this.setState({ endValid: 'has-danger' });
+      this.setState({ endValid: "has-danger" });
     }
   };
 
@@ -114,11 +115,8 @@ class RequestForm extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-6 ">
+          <div className="col-md-6 col-sm-12">
             <Form onSubmit={this.onSubmit}>
-              <Label> Date: </Label>
-              <Input value={this.state.dateDisplay} className={style.input} />
-              <br />
               <div className={style.calendar}>
                 <DayPickerSingleDateController
                   date={this.state.date}
@@ -128,7 +126,7 @@ class RequestForm extends Component {
                       dateDisplay: date.format("YYYY-MM-DD")
                     });
                   }}
-                  focused={this.state.focused} 
+                  focused={this.state.focused}
                   onFocusChange={({ focused }) => {
                     this.setState({ focused });
                   }}
@@ -138,7 +136,7 @@ class RequestForm extends Component {
 
               <br />
               <div className="row justify-content-md-center">
-                <div className="col-4">
+                <div className="col-5">
                   <Label>Start Time:</Label>
                   <br />
                   <Input
@@ -149,8 +147,8 @@ class RequestForm extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                
-                <div className="col-4">
+
+                <div className="col-5">
                   <Label>End Time: </Label> <br />
                   <Input
                     type="time"
@@ -159,26 +157,26 @@ class RequestForm extends Component {
                     value={this.state.end}
                     className={style.input}
                     onChange={this.onChange}
-                    invalid={ this.state.endValid === 'has-danger' }
+                    invalid={this.state.endValid === "has-danger"}
                   />
                   <FormFeedback invalid>
-                  There is an error in your end time.
-              </FormFeedback>
+                    There is an error in your end time.
+                  </FormFeedback>
                 </div>
               </div>
               <br />
               <div className="row justify-content-md-center">
-              <div className="col-4">
-              <Button
-                color="info"
-                size="md"
-                onClick={this.onSubmit}
-                disabled={!this.state.end}
-                block
-              >
-                Submit
-              </Button>
-              </div>
+                <div className="col-4">
+                  <Button
+                    color="info"
+                    size="md"
+                    onClick={this.onSubmit}
+                    disabled={!this.state.end}
+                    block
+                  >
+                    Submit
+                  </Button>
+                </div>
               </div>
             </Form>
 

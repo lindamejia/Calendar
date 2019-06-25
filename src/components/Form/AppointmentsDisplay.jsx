@@ -4,7 +4,6 @@ import moment from "moment";
 
 class FormDisplay extends Component {
   componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps", nextProps);
     this.setState(nextProps);
   }
 
@@ -23,7 +22,6 @@ class FormDisplay extends Component {
     this.setState({
       appointments: newAppointment
     });
-    console.log({ appointments });
   };
 
   render() {

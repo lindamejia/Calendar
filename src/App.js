@@ -15,13 +15,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Online polling={polling}> */}
-        <NavBar />
-        <RequestForm />
-        {/* </Online> */}
-        {/* <Offline polling={polling}>
+        <Online >
+          <NavBar />
+          <RequestForm />
+        </Online>
+        <Offline >
           <h1>YOU ARE OFFLINE</h1>
-        </Offline> */}
+        </Offline>
       </div>
     );
   }
