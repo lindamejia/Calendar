@@ -4,7 +4,6 @@ import { DayPickerSingleDateController } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 import moment from "moment";
 import {
-  Alert,
   Form,
   Label,
   Input,
@@ -23,7 +22,6 @@ class RequestForm extends Component {
     dateDisplay: moment().format("YYYY-MM-DD"),
     start: "",
     end: "",
-    // appointment:{},
     appointmentsArray: [],
     tryAgain: false,
     endValid: '',
@@ -96,8 +94,8 @@ class RequestForm extends Component {
 
     for (let i = 0; i < appointmentsArray.length - 1; i++) {
       if (
-        appointmentsArray[i].end < newAppt.start &&
-        appointmentsArray[i + 1].start > newAppt.end
+        appointmentsArray[i].end <= newAppt.start &&
+        appointmentsArray[i + 1].start >= newAppt.end
       ) {
         return true;
       }
